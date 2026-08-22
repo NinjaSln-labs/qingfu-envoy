@@ -1,0 +1,51 @@
+name: Feature request
+description: 新能力或增强（可能触发 ADR / PRD 修订）
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先对照 [ROADMAP V1 不做项](https://github.com/NinjaSln-labs/qingfu-envoy/blob/main/ROADMAP.md#v1-范围披露做--不做)。
+        静默自付、自建清算等 **不在 V1**。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 要解决什么问题？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 建议方案（可含伪代码）
+    validations:
+      required: true
+  - type: dropdown
+    id: adr
+    attributes:
+      label: 是否可能与现有 ADR 冲突？
+      options:
+        - 否
+        - 可能 — 需要新 ADR
+        - 不确定
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 建议归属阶段
+      options:
+        - 文档 only
+        - S1 core
+        - S2 CLI
+        - S3 MCP
+        - S4 Web
+        - S5 支付宝
+        - V1.1+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: 约束确认
+      options:
+        - label: 方案仍要求主理人确认后再执行（无静默扣款）
+          required: true

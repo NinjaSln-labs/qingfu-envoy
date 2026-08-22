@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ROADMAP & scope
+    url: https://github.com/NinjaSln-labs/qingfu-envoy/blob/main/ROADMAP.md
+    about: 当前里程碑与 V1 做/不做
+  - name: Contributing guide
+    url: https://github.com/NinjaSln-labs/qingfu-envoy/blob/main/CONTRIBUTING.md
+    about: 贡献流程与 ADR 纪律
+  - name: Security (private)
+    url: https://github.com/NinjaSln-labs/qingfu-envoy/security/advisories/new
+    about: 勿在公开 Issue 贴密钥或 exploit 细节

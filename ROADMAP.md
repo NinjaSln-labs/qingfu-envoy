@@ -164,7 +164,8 @@ flowchart LR
 | 架构 | [architecture](docs/design/architecture.md) |
 | 实现 | [implementation-plan-v1](docs/design/implementation-plan-v1.md) |
 | 过程纪律 | [0→1 路径](docs/product/0-1-path.md) |
-| 全索引 | [docs/product/README.md](docs/product/README.md) |
+| 全索引 | [docs/README.md](docs/README.md) |
+| 贡献 | [CONTRIBUTING](CONTRIBUTING.md) |
 
 ---
 

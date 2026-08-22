@@ -1,0 +1,67 @@
+name: Bug report
+description: 可复现的缺陷（勿含密钥、真实商户号）
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请勿粘贴 `.env`、私钥、完整支付回调报文。见 [SECURITY.md](../../SECURITY.md)。
+  - type: dropdown
+    id: component
+    attributes:
+      label: 组件
+      options:
+        - packages/core
+        - CLI（S2+）
+        - MCP（S3+）
+        - Web（S4+）
+        - 支付宝轨（S5+）
+        - 文档
+        - 其他
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: 相关阶段
+      options:
+        - 不确定
+        - S1
+        - S2
+        - S3
+        - S4
+        - S5
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      placeholder: |
+        1. npm test / 命令 ...
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: ticket
+    attributes:
+      label: Ticket ID（若有）
+      placeholder: T1.1
+  - type: checkboxes
+    id: security
+    attributes:
+      label: 确认
+      options:
+        - label: 本 Issue 不含密钥、私钥或真实支付凭证
+          required: true

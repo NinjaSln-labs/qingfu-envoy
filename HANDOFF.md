@@ -26,7 +26,7 @@
 - [ ] 你审计划（可选）  
 - [ ] **授权 S1**
 
-## 5. 引用
+## 4. 引用
 
 | 实施计划 | `docs/design/implementation-plan-v1.md` |
 | 计划审计 | `docs/design/IMPLEMENTATION-PLAN-AUDIT.md` |

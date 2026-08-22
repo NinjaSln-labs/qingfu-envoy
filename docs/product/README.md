@@ -21,7 +21,10 @@
 | 14 | [Product marketing](./product-marketing.md) | 定位 |
 | 15 | [Launch plan](./launch-plan.md) | 开源首发 |
 | 16 | [产品文档审计](./PRODUCT-DOC-AUDIT.md) | 规格文档就绪度 |
+| — | [docs 中心](../README.md) | 文档总入口 |
 | — | [ROADMAP](../../ROADMAP.md) | **对外路线图** |
+| — | [CONTRIBUTING](../../CONTRIBUTING.md) | 贡献 |
+| — | [SECURITY](../../SECURITY.md) | 安全 |
 | — | [开源披露](../OPEN-SOURCE-DISCLOSURE.md) | 披露物清单 |
 | — | [HANDOFF](../../HANDOFF.md) | 工程交接 |
 | — | `mvp-v0-prd.md` | **废止** |

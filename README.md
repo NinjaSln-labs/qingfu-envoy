@@ -17,7 +17,9 @@
 | [ROADMAP](ROADMAP.md) | 里程碑、V1 范围、计划披露 |
 | [PRD](docs/product/prd.md) | 产品范围权威 |
 | [实施计划](docs/design/implementation-plan-v1.md) | 任务级计划（公开） |
-| [文档索引](docs/product/README.md) | 全量链接 |
+| [文档索引](docs/README.md) | 全量链接 |
+| [Contributing](CONTRIBUTING.md) | 贡献流程 |
+| [Security](SECURITY.md) | 安全报告 |
 
 ## 开发
 

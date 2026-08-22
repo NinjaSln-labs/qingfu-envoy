@@ -31,8 +31,15 @@
 - 实施计划全文：✅ 公开  
 - 代码进度：🚧 诚实标注「未发布 / S1 未开工」
 
-## 与 GitHub 的衔接（建议）
+## 与 GitHub 的衔接
 
-- Milestone 对齐 ROADMAP 里程碑名（M1–M5、V1）  
-- Issue/PR 标签：`S1`…`S5`、`adr`、`security`  
-- Release：仅当 V1 launch 检查清单满足后打 tag
+| 项 | 路径 / 说明 | 状态 |
+|----|-------------|------|
+| Milestone | M0–M5、V1（对齐 ROADMAP 表） | ✅ 远程已建 |
+| Issue 模板 | `.github/ISSUE_TEMPLATE/` | ✅ |
+| PR 模板 | `.github/pull_request_template.md` | ✅ |
+| 贡献指南 | `/CONTRIBUTING.md` | ✅ |
+| 安全策略 | `/SECURITY.md` | ✅ |
+| 标签 | `S1`…`S5`、`adr`、`security`、`documentation` | ✅ |
+
+Issue/PR 请标明阶段与 Ticket ID；Release 仅当 V1 launch 检查清单满足后打 tag。

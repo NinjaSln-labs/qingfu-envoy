@@ -1,0 +1,36 @@
+name: Scope / ADR discussion
+description: 产品边界、裁定或 ROADMAP 变更讨论
+title: "[scope] "
+labels: ["adr"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        边界变更须写入 [docs/decisions/](https://github.com/NinjaSln-labs/qingfu-envoy/tree/main/docs/decisions) 并更新 ROADMAP。
+  - type: textarea
+    id: context
+    attributes:
+      label: 背景与动机
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: 备选方案（含「不做」）
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: 对 PRD / 领域模型 / 安全的影响
+    validations:
+      required: true
+  - type: checkboxes
+    id: refs
+    attributes:
+      label: 已读文档
+      options:
+        - label: 已读 ADR 001（无静默自付）
+          required: true
+        - label: 已读 ROADMAP V1 不做项
+          required: true
