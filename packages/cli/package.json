@@ -1,0 +1,22 @@
+{
+  "name": "@qingfu/cli",
+  "version": "0.0.1",
+  "description": "Qingfu Envoy principal CLI",
+  "type": "module",
+  "bin": {
+    "qingfu": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@qingfu/core": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.11",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "license": "Apache-2.0"
+}

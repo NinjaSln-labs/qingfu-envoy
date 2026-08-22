@@ -15,8 +15,8 @@
 |------|------|
 | 产品规格 | ✅ PRD、成功指标、领域模型已定稿 |
 | 实施计划 | ✅ [implementation-plan-v1](docs/design/implementation-plan-v1.md) + [审计 100/100](docs/design/IMPLEMENTATION-PLAN-AUDIT.md) |
-| 可运行产品 | 🚧 **S1 core 闭合**；CLI/MCP/Web 未发布 |
-| 下一门禁 | **S2**（主理人 CLI）— 待授权 |
+| 可运行产品 | 🚧 **S1+S2 闭合**；MCP/Web 未发布 |
+| 下一门禁 | **S3 ∥ S4**（Agent MCP / 本地 Web） |
 | 真轨 | 计划首接 **支付宝 sandbox**；微信排 **V1.1+** |
 
 我们**不**用虚假进度条：每个阶段以 [stage-spec DoD](docs/design/stage-specs/) 勾选为准。
@@ -68,7 +68,7 @@ flowchart LR
 | M0 规格冻结 | ①–③ | 文档 | PRD、D8、领域、追溯矩阵 | ✅ |
 | M0.5 计划披露 | S0 | 文档 | 实施计划 + 审计 + **本 ROADMAP** | ✅ |
 | M1 可信内核 | S1 | 代码 | `@qingfu/core`：提议→确认→执行/退款；门禁测试全绿 | ✅ |
-| M2 主理人 CLI | S2 | 代码 | `qingfu` CLI；10 分钟 Mock dogfood 文档 | ⏳ |
+| M2 主理人 CLI | S2 | 代码 | `qingfu` CLI；10 分钟 Mock dogfood 文档 | ✅ |
 | M3 Agent 接入 | S3 | 代码 | MCP 工具；**无 blind execute** | ⏳ |
 | M4 任务面 | S4 | 代码 | 本地 Web（localhost） | ⏳ |
 | M5 真轨骨架 | S5 | 代码 | 支付宝 sandbox 适配器（env 可 skip） | ⏳ |
