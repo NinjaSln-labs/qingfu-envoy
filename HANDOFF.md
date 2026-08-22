@@ -5,25 +5,27 @@
 | 项 | 内容 |
 |----|------|
 | 日期 | 2026-08-22 |
-| 一句话 | **S4 Web 闭合**；下一门禁 **S5 支付宝 sandbox** |
+| 一句话 | **V1 垂直切片闭合**（S1–S5）；可进入 dogfood / launch 清单 |
 
 ## 2. 快照
 
 | 域 | 状态 |
 |----|------|
 | S1 core | [审计 100/100](docs/design/S1-IMPLEMENTATION-AUDIT.md) | ✅ |
-| S2 CLI | `packages/cli` + dogfood README | ✅ |
-| S3 MCP | `packages/mcp` + E2E README | ✅ |
-| S4 Web | `packages/web` 本地任务面 | ✅ |
-| S5 | 未开工 | ❌ |
+| S2 CLI | `packages/cli` | ✅ |
+| S3 MCP | `packages/mcp` | ✅ |
+| S4 Web | `packages/web` | ✅ |
+| S5 rails-alipay | `packages/rails-alipay`（sandbox skip 无 env） | ✅ |
 
 ## 3. 下一步
 
-- [ ] **S5** 支付宝 sandbox（[#15](https://github.com/NinjaSln-labs/qingfu-envoy/issues/15)–[#16](https://github.com/NinjaSln-labs/qingfu-envoy/issues/16)）
+- [ ] D8 dogfood 计数、`launch-plan.md` 清单（不自动发布）
+- [ ] 可选：S5 实网 sandbox 凭证跑通 `execute.sandbox.test.ts`
 
 ## 4. 引用
 
-| CLI dogfood | `packages/cli/README.md` |
-| MCP E2E | `packages/mcp/README.md` |
+| CLI | `packages/cli/README.md` |
+| MCP | `packages/mcp/README.md` |
 | Web | `packages/web/README.md` |
-| S4 DoD | `docs/design/stage-specs/S4.md` |
+| Alipay rail | `packages/rails-alipay/README.md` |
+| S5 DoD | `docs/design/stage-specs/S5.md` |
