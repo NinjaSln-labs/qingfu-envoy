@@ -1,7 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { mapRefundResult } from "./refund-map.js";
+import { mapExecuteResult, mapRefundResult } from "./refund-map.js";
 
 describe("alipay refund contract", () => {
+  it("maps execute success", () => {
+    const r = mapExecuteResult(
+      { code: "10000", order_id: "o1" },
+      "fallback",
+    );
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      expect(r.railRef).toBe("o1");
+    }
+  });
+
+  it("maps execute failure", () => {
+    const r = mapExecuteResult(
+      { code: "40004", sub_msg: "execute failed" },
+      "fallback",
+    );
+    expect(r.ok).toBe(false);
+  });
+
   it("maps success", () => {
     const r = mapRefundResult({
       code: "10000",

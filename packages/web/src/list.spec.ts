@@ -87,4 +87,60 @@ describe("web list (P0-13 IA)", () => {
     });
     expect((refunded.body as { status: string }).status).toBe("refunded");
   });
+
+  it("reject, cancel, freeze, unfreeze, export via API", async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "qingfu-web-"));
+    const ctx = await openWebContext(dir);
+    ctx.proposals.registerEnvoy("e1", "demo");
+    ctx.proposals.proposePayment(
+      {
+        id: "p3",
+        envoyId: "e1",
+        money: { amount: "2", currency: "CNY" },
+        purpose: "a",
+        payeeSummary: "b",
+      },
+      { kind: "envoy", id: "e1" },
+    );
+
+    const rejected = await handleApi(ctx, {
+      method: "POST",
+      path: "/api/proposals/p3/reject",
+    });
+    expect((rejected.body as { status: string }).status).toBe("rejected");
+
+    ctx.proposals.proposePayment(
+      {
+        id: "p4",
+        envoyId: "e1",
+        money: { amount: "2", currency: "CNY" },
+        purpose: "c",
+        payeeSummary: "d",
+      },
+      { kind: "envoy", id: "e1" },
+    );
+    const cancelled = await handleApi(ctx, {
+      method: "POST",
+      path: "/api/proposals/p4/cancel",
+    });
+    expect((cancelled.body as { status: string }).status).toBe("cancelled");
+
+    const frozen = await handleApi(ctx, {
+      method: "POST",
+      path: "/api/envoys/e1/freeze",
+    });
+    expect((frozen.body as { frozen: boolean }).frozen).toBe(true);
+
+    const unfrozen = await handleApi(ctx, {
+      method: "POST",
+      path: "/api/envoys/e1/unfreeze",
+    });
+    expect((unfrozen.body as { frozen: boolean }).frozen).toBe(false);
+
+    const exported = await handleApi(ctx, {
+      method: "GET",
+      path: "/api/export?proposalId=p3",
+    });
+    expect(Array.isArray(exported.body)).toBe(true);
+  });
 });

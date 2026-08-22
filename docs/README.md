@@ -19,7 +19,7 @@
 | [product/](./product/README.md) | PRD、指标、0→1 路径、launch |
 | [design/](./design/stage-plan.md) | 领域、架构、实施计划、stage-spec |
 | [decisions/](./decisions/000-decision-log.md) | ADR 裁定 |
-| [delivery/](./delivery/tickets.md) | Ticket 索引 |
+| [delivery/](./delivery/tickets.md) | Ticket 索引 · [dogfood 周记](./delivery/dogfood-journal.md) |
 | [research/](./research/2026-08-22-agentic-payment-capability-landscape.md) | 行业景观（非 V1 承诺） |
 
 ## 阅读序（0→1）
