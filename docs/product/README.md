@@ -20,7 +20,8 @@
 | 13 | [能力调研](../research/2026-08-22-agentic-payment-capability-landscape.md) | 远期景观 |
 | 14 | [Product marketing](./product-marketing.md) | 定位 |
 | 15 | [Launch plan](./launch-plan.md) | 开源首发 |
-| 16 | [产品文档审计](./PRODUCT-DOC-AUDIT.md) | 规格文档就绪度 |
+| 16 | [v0.1.0 公告稿](./announce-v0.1.0.md) | ORB 短文（社媒/社群） |
+| 17 | [产品文档审计](./PRODUCT-DOC-AUDIT.md) | 规格文档就绪度 |
 | — | [docs 中心](../README.md) | 文档总入口 |
 | — | [ROADMAP](../../ROADMAP.md) | **对外路线图** |
 | — | [CONTRIBUTING](../../CONTRIBUTING.md) | 贡献 |

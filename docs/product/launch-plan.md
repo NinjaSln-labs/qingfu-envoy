@@ -11,7 +11,7 @@
 | 1. Dogfood | 002：≥20 笔或 4 周周记；无人确认扣款=0 | D8 leading 达标 |
 | 2. Private | 邀请 ≤10 名开发者装 CLI；收 Issue | 有书面反馈 |
 | 3. Public repo | GitHub 公开；Apache-2.0；README 定位正确 | ✅ 2026-08-22 |
-| 4. Announce | ORB：README/docs + 可选社媒/社群 | 首周流量记录 |
+| 4. Announce | ORB：README/docs + [v0.1.0 公告稿](announce-v0.1.0.md) + 可选社媒/社群 | Release 已发；短文待发 |
 | 5. Iterate | 按 Issue 排 V1.1（微信轨等） | 新 ADR / tickets |
 
 ## ORB 渠道（开源）
