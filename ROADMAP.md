@@ -171,7 +171,7 @@ flowchart LR
 
 ## 参与与反馈
 
-- **Issue**：讨论范围、报告与 ADR 冲突的行为（尤其任何「免确认扣款」路径）  
+- **Issue**：讨论范围、报告与 ADR 冲突的行为；实现任务见 [tickets 索引](docs/delivery/tickets.md)（#2–#7 = M1）
 - **PR**：请标明对应 Ticket / Task ID（如 S1.2）；须绿 `npm test`  
 - **安全**：密钥勿入 PR；支付相关变更须对照 ADR 001、004  
 

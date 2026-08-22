@@ -41,5 +41,6 @@
 | 贡献指南 | `/CONTRIBUTING.md` | ✅ |
 | 安全策略 | `/SECURITY.md` | ✅ |
 | 标签 | `S1`…`S5`、`adr`、`security`、`documentation` | ✅ |
+| Ticket Issues | `docs/delivery/tickets.md` → #1–#16 | ✅ |
 
 Issue/PR 请标明阶段与 Ticket ID；Release 仅当 V1 launch 检查清单满足后打 tag。
