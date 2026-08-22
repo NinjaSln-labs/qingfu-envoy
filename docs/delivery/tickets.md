@@ -33,6 +33,6 @@
 | M3 Agent 接入 | T3.1–T3.2 | ✅ |
 | M4 任务面 | T4.1 | ✅ |
 | M5 真轨骨架 | T5.1–T5.2 | ✅ |
-| V1 标签 | Dogfood + launch 清单 | ⏳ |
+| V1 标签 | Dogfood + launch 清单 | ✅ `v0.1.0` |
 
 批量创建脚本（勿重复跑）：`scripts/create-github-issues.sh`
