@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+
+# Competitor mirrors — local only, never push
+refs/competitors/
+
+# Local agent tooling (marketing canonical copy in docs/)
+.agents/
