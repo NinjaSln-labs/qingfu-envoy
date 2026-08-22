@@ -2,7 +2,7 @@
   "name": "qingfu-envoy",
   "private": true,
   "version": "0.0.1",
-  "description": "青蚨使 · Qingfu Envoy — open agent payment control plane (propose → human approve → licensed rail)",
+  "description": "青蚨使 · 开源 Agent 付款控制面：提议→确认→持牌通道执行。非支付机构，禁止静默自付。",
   "type": "module",
   "workspaces": [
     "packages/*"
