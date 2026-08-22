@@ -1,4 +1,4 @@
-import type { Actor, AuditEvent, ProposalStatus } from "./types.js";
+import type { Actor, AuditEvent, AuditScope, ProposalStatus } from "./types.js";
 
 export type AuditSink = {
   append(event: AuditEvent): void;
@@ -12,9 +12,12 @@ export function createMemoryAuditSink(): AuditSink {
       events.push(event);
     },
     list(proposalId) {
-      return proposalId
-        ? events.filter((e) => e.proposalId === proposalId)
-        : [...events];
+      if (!proposalId) {
+        return [...events];
+      }
+      return events.filter(
+        (e) => e.scope === "proposal" && e.proposalId === proposalId,
+      );
     },
   };
 }
@@ -30,16 +33,44 @@ export function recordTransition(
     to: ProposalStatus;
     detail?: Record<string, unknown>;
     at?: string;
+    scope?: AuditScope;
   },
 ): AuditEvent {
   const event: AuditEvent = {
     id: input.id,
+    scope: input.scope ?? "proposal",
     proposalId: input.proposalId,
     at: input.at ?? new Date().toISOString(),
     actor: input.actor,
     action: input.action,
     from: input.from,
     to: input.to,
+    detail: input.detail,
+  };
+  sink.append(event);
+  return event;
+}
+
+export function recordEnvoyAction(
+  sink: AuditSink,
+  input: {
+    id: string;
+    envoyId: string;
+    actor: Actor;
+    action: string;
+    detail?: Record<string, unknown>;
+    at?: string;
+  },
+): AuditEvent {
+  const event: AuditEvent = {
+    id: input.id,
+    scope: "envoy",
+    proposalId: input.envoyId,
+    at: input.at ?? new Date().toISOString(),
+    actor: input.actor,
+    action: input.action,
+    from: null,
+    to: null,
     detail: input.detail,
   };
   sink.append(event);

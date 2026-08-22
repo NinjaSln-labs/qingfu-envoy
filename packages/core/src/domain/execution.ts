@@ -8,7 +8,7 @@ import type { PaymentRail } from "./rail.js";
 import { DomainError, type Actor } from "./types.js";
 
 /**
- * Execute only after human approve. There is intentionally no silent/auto path.
+ * Execute only after human approve. No bypass of principal confirmation.
  */
 export async function executeApproved(
   proposal: PaymentProposal,

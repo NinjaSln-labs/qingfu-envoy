@@ -8,7 +8,7 @@
 **完整路线图与里程碑：** [ROADMAP.md](ROADMAP.md)  
 **披露维护说明：** [docs/OPEN-SOURCE-DISCLOSURE.md](docs/OPEN-SOURCE-DISCLOSURE.md)
 
-当前：**规格与实施计划已就绪**；可运行产品 **尚未发布**；实现从 **S1** 起按公开 stage-spec 推进。
+当前：**S1 闭合（实现审计 100/100，33 tests）**；下一门禁 **S2 CLI**。
 
 ## 文档
 
@@ -24,10 +24,10 @@
 ## 开发
 
 ```bash
-npm install && npm test   # 探索骨架（可选）
+npm install && npm test && npm run build
 ```
 
-`packages/core` 为探索骨架；**S1** 起与 [实施计划](docs/design/implementation-plan-v1.md) 对齐。
+`packages/core`：`domain/` + `app/` + `persistence/`；数据默认 `~/.qingfu-envoy/`（见 `.env.example`）。
 
 ## 许可
 

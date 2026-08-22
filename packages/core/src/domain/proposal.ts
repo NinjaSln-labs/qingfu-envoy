@@ -1,4 +1,8 @@
-import { DomainError, type Money, type ProposalStatus } from "./types.js";
+import { assertValidMoney, parseMoney } from "./money.js";
+import { DomainError, type ProposalStatus } from "./types.js";
+import type { Money } from "./money.js";
+
+export type { Money };
 
 export type PaymentProposal = {
   id: string;
@@ -10,6 +14,7 @@ export type PaymentProposal = {
   createdAt: string;
   railRef?: string;
   failureReason?: string;
+  refundRef?: string;
 };
 
 export type ProposeInput = {
@@ -32,16 +37,13 @@ export function propose(input: ProposeInput): PaymentProposal {
   requireNonEmpty("envoyId", input.envoyId);
   requireNonEmpty("purpose", input.purpose);
   requireNonEmpty("payeeSummary", input.payeeSummary);
-  requireNonEmpty("currency", input.money.currency);
-  requireNonEmpty("amount", input.money.amount);
-  if (Number(input.money.amount) <= 0) {
-    throw new DomainError("amount must be positive");
-  }
+
+  const money = parseMoney(input.money.amount, input.money.currency);
 
   return {
     id: input.id,
     envoyId: input.envoyId,
-    money: input.money,
+    money,
     purpose: input.purpose.trim(),
     payeeSummary: input.payeeSummary.trim(),
     status: "proposed",
@@ -79,6 +81,34 @@ export function markFailed(
 ): PaymentProposal {
   assertStatus(proposal, "approved", "markFailed");
   return { ...proposal, status: "failed", failureReason: reason };
+}
+
+export function markRefunded(
+  proposal: PaymentProposal,
+  refundRef: string,
+): PaymentProposal {
+  assertRefundEligible(proposal, "markRefunded");
+  requireNonEmpty("refundRef", refundRef);
+  return { ...proposal, status: "refunded", refundRef };
+}
+
+export function markRefundFailed(
+  proposal: PaymentProposal,
+  reason: string,
+): PaymentProposal {
+  assertRefundEligible(proposal, "markRefundFailed");
+  return { ...proposal, status: "refund_failed", failureReason: reason };
+}
+
+function assertRefundEligible(
+  proposal: PaymentProposal,
+  action: string,
+): void {
+  if (proposal.status !== "executed" && proposal.status !== "refund_failed") {
+    throw new DomainError(
+      `cannot ${action} proposal ${proposal.id} in status ${proposal.status}`,
+    );
+  }
 }
 
 function assertStatus(
