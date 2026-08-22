@@ -1,0 +1,24 @@
+{
+  "name": "@qingfu/mcp",
+  "version": "0.0.1",
+  "description": "Qingfu Envoy MCP server — Envoy propose/list/get/cancel/status (no blind execute)",
+  "type": "module",
+  "bin": {
+    "qingfu-mcp": "./dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@qingfu/core": "0.0.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.11",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "license": "Apache-2.0"
+}

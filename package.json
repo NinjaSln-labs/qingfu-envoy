@@ -8,8 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w @qingfu/core && npm run build -w @qingfu/cli",
-    "test": "npm run build -w @qingfu/core && npm test -w @qingfu/core && npm test -w @qingfu/cli"
+    "build": "npm run build -w @qingfu/core && npm run build -w @qingfu/cli && npm run build -w @qingfu/mcp",
+    "test": "npm run build -w @qingfu/core && npm test -w @qingfu/core && npm test -w @qingfu/cli && npm test -w @qingfu/mcp"
   },
   "engines": {
     "node": ">=20"
