@@ -35,8 +35,8 @@
 
 ### Dogfood（ADR 002 · 发布阻断项）
 
-- [ ] [dogfood-journal](../delivery/dogfood-journal.md) 满 4 周或 ≥20 笔允准（**自测期不打放心拍**；可脚本 + 贴输出）
-- [ ] D8 反指标：**无人确认扣款 = 0**（CI 已测；运行态抽查）
+- [x] [dogfood-journal](../delivery/dogfood-journal.md) ≥20 笔允准（2026-08-22：21 笔，batch 20/20）
+- [x] D8 反指标：**无人确认扣款 = 0**（audit 核对 + CI）
 - [ ] 北极星放心拍：延后至 Private beta
 
 ### 可选增强（不挡 V1 标签）
