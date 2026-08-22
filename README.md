@@ -8,7 +8,7 @@
 **完整路线图与里程碑：** [ROADMAP.md](ROADMAP.md)  
 **披露维护说明：** [docs/OPEN-SOURCE-DISCLOSURE.md](docs/OPEN-SOURCE-DISCLOSURE.md)
 
-当前：**S1 闭合（实现审计 100/100，33 tests）**；下一门禁 **S2 CLI**。
+当前：**S1+S2 闭合**（`qingfu` CLI）；下一 **S3 MCP ∥ S4 Web**。
 
 ## 文档
 
@@ -24,10 +24,11 @@
 ## 开发
 
 ```bash
-npm install && npm test && npm run build
+npm install && npm run build && npm test
+node packages/cli/dist/cli.js help
 ```
 
-`packages/core`：`domain/` + `app/` + `persistence/`；数据默认 `~/.qingfu-envoy/`（见 `.env.example`）。
+Dogfood：[packages/cli/README.md](packages/cli/README.md) · 数据 `~/.qingfu-envoy/`
 
 ## 许可
 
