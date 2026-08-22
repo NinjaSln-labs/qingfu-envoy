@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>青蚨使 · 任务面</title>
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 1.5rem; max-width: 960px; }
+      h1 { font-size: 1.25rem; }
+      section { margin-bottom: 1.5rem; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ccc; padding: 0.4rem 0.6rem; text-align: left; }
+      button { margin-right: 0.25rem; }
+      pre { background: #f6f6f6; padding: 0.75rem; overflow: auto; }
+      .muted { color: #666; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <h1>青蚨使 · 主理人任务面</h1>
+    <p class="muted">Envoy 列表 → 提议列表 → 详情 / 审计 · 本地 127.0.0.1 only</p>
+
+    <section>
+      <h2>Envoy 列表</h2>
+      <div id="envoys"></div>
+    </section>
+
+    <section>
+      <h2>提议列表</h2>
+      <div id="proposals"></div>
+    </section>
+
+    <section>
+      <h2>提议详情 / 审计</h2>
+      <pre id="detail">选择一条提议</pre>
+    </section>
+
+    <script>
+      async function api(path, opts = {}) {
+        const res = await fetch(path, {
+          headers: { "Content-Type": "application/json" },
+          ...opts,
+        });
+        const body = await res.json();
+        if (!res.ok) throw new Error(body.error || res.statusText);
+        return body;
+      }
+
+      async function loadEnvoys() {
+        const envoys = await api("/api/envoys");
+        const el = document.getElementById("envoys");
+        if (!envoys.length) {
+          el.innerHTML = "<p class='muted'>暂无 Envoy</p>";
+          return;
+        }
+        el.innerHTML =
+          "<table><tr><th>ID</th><th>名称</th><th>冻结</th><th>动作</th></tr>" +
+          envoys
+            .map(
+              (e) =>
+                `<tr><td>${e.id}</td><td>${e.displayName}</td><td>${e.frozen ? "是" : "否"}</td>` +
+                `<td><button data-envoy="${e.id}" data-act="list">提议</button>` +
+                `<button data-envoy="${e.id}" data-act="freeze">急停</button>` +
+                `<button data-envoy="${e.id}" data-act="unfreeze">解冻</button></td></tr>`,
+            )
+            .join("") +
+          "</table>";
+        el.querySelectorAll("button").forEach((btn) => {
+          btn.onclick = async () => {
+            const id = btn.getAttribute("data-envoy");
+            const act = btn.getAttribute("data-act");
+            if (act === "list") {
+              await loadProposals(id);
+            } else {
+              await api(`/api/envoys/${id}/${act}`, { method: "POST" });
+              await loadEnvoys();
+            }
+          };
+        });
+      }
+
+      let selectedId = null;
+
+      async function loadProposals(envoyId) {
+        const q = envoyId ? `?envoyId=${encodeURIComponent(envoyId)}` : "";
+        const rows = await api("/api/proposals" + q);
+        const el = document.getElementById("proposals");
+        el.innerHTML =
+          "<table><tr><th>ID</th><th>状态</th><th>金额</th><th>用途</th><th>动作</th></tr>" +
+          rows
+            .map(
+              (p) =>
+                `<tr><td><a href="#" data-pid="${p.id}">${p.id}</a></td><td>${p.status}</td>` +
+                `<td>${p.money.amount} ${p.money.currency}</td><td>${p.purpose}</td>` +
+                `<td>` +
+                `<button data-pid="${p.id}" data-act="approve">允准</button>` +
+                `<button data-pid="${p.id}" data-act="reject">驳回</button>` +
+                `<button data-pid="${p.id}" data-act="cancel">取消</button>` +
+                `<button data-pid="${p.id}" data-act="execute">执行</button>` +
+                `<button data-pid="${p.id}" data-act="refund">退款</button>` +
+                `</td></tr>`,
+            )
+            .join("") +
+          "</table>";
+        el.querySelectorAll("a[data-pid]").forEach((a) => {
+          a.onclick = (ev) => {
+            ev.preventDefault();
+            showDetail(a.getAttribute("data-pid"));
+          };
+        });
+        el.querySelectorAll("button[data-pid]").forEach((btn) => {
+          btn.onclick = async () => {
+            const id = btn.getAttribute("data-pid");
+            const act = btn.getAttribute("data-act");
+            await api(`/api/proposals/${id}/${act}`, { method: "POST" });
+            await loadProposals(envoyId);
+            if (selectedId === id) await showDetail(id);
+          };
+        });
+      }
+
+      async function showDetail(id) {
+        selectedId = id;
+        const proposal = await api("/api/proposals/" + id);
+        const audit = await api("/api/proposals/" + id + "/audit");
+        document.getElementById("detail").textContent = JSON.stringify(
+          { proposal, audit },
+          null,
+          2,
+        );
+      }
+
+      loadEnvoys();
+      loadProposals();
+    </script>
+  </body>
+</html>

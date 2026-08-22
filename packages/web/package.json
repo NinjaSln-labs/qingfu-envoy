@@ -1,0 +1,22 @@
+{
+  "name": "@qingfu/web",
+  "version": "0.0.1",
+  "description": "Qingfu Envoy local Web principal task surface (127.0.0.1 only)",
+  "type": "module",
+  "bin": {
+    "qingfu-web": "./dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && vitest run"
+  },
+  "dependencies": {
+    "@qingfu/core": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.11",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "license": "Apache-2.0"
+}
