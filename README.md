@@ -33,7 +33,7 @@
 | 产品规格 `docs/product/` | ✅ PRD · D8 · launch 清单 |
 | S1–S5 垂直切片 | ✅ core · CLI · MCP · Web · rails-alipay |
 | 契约测试 | ✅ `npm test` 62 绿 + 1 skip（sandbox 无 env） |
-| Mock dogfood | ✅ ≥20 笔允准（[周记](docs/delivery/dogfood-journal.md)） |
+| Mock dogfood | ✅ ≥20 笔允准（launch-plan 检查项） |
 | 下一门禁 | V1 标签 → Private beta（放心拍延后至邀请试用） |
 
 **路线图：** [ROADMAP.md](ROADMAP.md)

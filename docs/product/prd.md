@@ -5,8 +5,7 @@
 - 约束：ADR **001–004**
 - 问题：`docs/product/problem-statement.md`
 - 指标：`docs/product/success-metrics.md`（D8）
-- 调研（非范围权威）：`docs/research/2026-08-22-agentic-payment-capability-landscape.md`
-- 过程纪律：`docs/product/0-1-path.md`
+- 实施与门禁：`docs/design/implementation-plan-v1.md`、`docs/design/stage-specs/`
 
 ## Problem Statement
 
@@ -158,7 +157,7 @@ approved → failed（轨执行失败）
 
 ## Timeline
 
-服从 `docs/product/0-1-path.md` 与 `docs/design/stage-plan.md`：**先设计与 stage-spec，再实现**。无对外硬截止日期。
+服从 `docs/design/stage-specs/` 与实施计划：**先设计与 stage-spec，再实现**。无对外硬截止日期。
 
 ## 追溯
 

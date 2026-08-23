@@ -14,10 +14,10 @@
 | 维度 | 状态 |
 |------|------|
 | 产品规格 | ✅ PRD、成功指标、领域模型已定稿 |
-| 实施计划 | ✅ [implementation-plan-v1](docs/design/implementation-plan-v1.md) + [审计 100/100](docs/design/IMPLEMENTATION-PLAN-AUDIT.md) |
+| 实施计划 | ✅ [implementation-plan-v1](docs/design/implementation-plan-v1.md) |
 | V1 垂直切片 | ✅ **S1–S5 闭合**；`npm test` 62+ 绿（rails sandbox 无 env 则 skip） |
-| 实现审计 | ✅ S1 [100/100](docs/design/S1-IMPLEMENTATION-AUDIT.md)；S2–S5 本地审计完成 |
-| 下一门禁 | **Dogfood**（[ADR 002](docs/decisions/002-dogfood-first.md)）→ launch 清单 → V1 标签 |
+| 实现审计 | ✅ S1–S5 + V1 rollup（维护者本地 · 不入库） |
+| 下一阶段 | **首发传播**（[launch-plan](docs/product/launch-plan.md)）· 按需 V1.1 |
 | 真轨 | `rails-alipay` 适配器就绪；CLI/Web **默认 Mock**；sandbox 凭证可选实跑 |
 
 我们**不**用虚假进度条：每个阶段以 [stage-spec DoD](docs/design/stage-specs/) 勾选为准。
@@ -116,7 +116,7 @@ flowchart LR
 | MCP | [packages/mcp/README.md](packages/mcp/README.md) |
 | Web | [packages/web/README.md](packages/web/README.md) |
 
-周记模板：[dogfood-journal](docs/delivery/dogfood-journal.md)。
+周记与台账：维护者本地（`docs/delivery/`，gitignore）。
 
 ---
 
@@ -136,8 +136,7 @@ flowchart LR
 ### 2. 实施计划公开
 
 - 任务级计划：[implementation-plan-v1.md](docs/design/implementation-plan-v1.md)  
-- 计划审计：[IMPLEMENTATION-PLAN-AUDIT.md](docs/design/IMPLEMENTATION-PLAN-AUDIT.md)  
-- 工单索引：[tickets.md](docs/delivery/tickets.md)  
+- 工单追踪：GitHub Issues（#1–#16）  
 
 ### 3. 阶段门禁公开
 
@@ -149,7 +148,7 @@ flowchart LR
 
 ### 5. 竞品与能力景观
 
-[调研文档](docs/research/2026-08-22-agentic-payment-capability-landscape.md) 为**远期行业景观**，**不是** V1 承诺范围。
+行业调研为维护者本地材料（`docs/research/`，gitignore），**不是** V1 承诺范围。
 
 ---
 
@@ -173,8 +172,7 @@ flowchart LR
 | 所有人 | [README](README.md) → **本 ROADMAP** |
 | 产品/范围 | [PRD](docs/product/prd.md) |
 | 架构 | [architecture](docs/design/architecture.md) |
-| 实现 | [implementation-plan-v1](docs/design/implementation-plan-v1.md) |
-| 过程纪律 | [0→1 路径](docs/product/0-1-path.md) |
+| 实现 | [implementation-plan-v1](docs/design/implementation-plan-v1.md) → [stage-specs](docs/design/stage-specs/) |
 | 全索引 | [docs/README.md](docs/README.md) |
 | 贡献 | [CONTRIBUTING](CONTRIBUTING.md) |
 

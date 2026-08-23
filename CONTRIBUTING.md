@@ -6,7 +6,7 @@
 
 1. 读 [ROADMAP.md](ROADMAP.md) — 当前进度与 V1 做/不做  
 2. 读 [docs/product/prd.md](docs/product/prd.md) — 产品范围权威  
-3. 查 [docs/delivery/tickets.md](docs/delivery/tickets.md) — 是否已有对应 Ticket  
+3. 查 GitHub Issues（标签 `S1`…`S5` 或标题关键词）— 是否已有对应工单  
 4. 边界变更须先 [ADR](docs/decisions/000-decision-log.md)，**禁止**口头扩大范围  
 
 ### 硬约束（不可 PR 绕过）
@@ -55,7 +55,7 @@
 S0 计划（文档）✅ → S1 core → S2 CLI → (S3 MCP ∥ S4 Web) → S5 支付宝 sandbox → V1 tag
 ```
 
-详见 [stage-plan](docs/design/stage-plan.md) 与各 [stage-spec](docs/design/stage-specs/)。
+详见 [stage-specs](docs/design/stage-specs/) 与各 stage-spec DoD。
 
 ## 行为准则
 

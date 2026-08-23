@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Date: 2026-08-22（产品边界拍板）
-- 相关：`docs/research/2026-08-22-agentic-payment-capability-landscape.md`；HANDOFF §2
+- 相关：[ROADMAP.md](../../ROADMAP.md) 当前状态
 
 ## Context
 

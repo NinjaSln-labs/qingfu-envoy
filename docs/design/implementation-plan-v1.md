@@ -4,12 +4,12 @@
 > **Goal:** 提议→人确认→Mock/支付宝 sandbox 执行→审计导出→退款；CLI + MCP + Web。  
 > **Architecture:** `packages/core` 领域+应用；三壳 + `rails-alipay`。  
 > **Tech Stack:** Node ≥20, TypeScript, vitest；支付宝 OpenAPI sandbox（S5）。  
-> **权威：** PRD `docs/product/prd.md`；领域 `docs/design/domain-model.md`；阶段 `docs/design/stage-plan.md`。
+> **权威：** PRD `docs/product/prd.md`；领域 `docs/design/domain-model.md`；门禁 `docs/design/stage-specs/`。
 
 ## Global Constraints（ADR + PRD）
 
 - **001** 禁止静默自付；无 `approved` 不得 `execute`  
-- **002** dogfood 见 D8；完成后更新 HANDOFF  
+- **002** dogfood 见 D8；完成后对照 `launch-plan.md`  
 - **003** 三端分期；首轨支付宝 sandbox  
 - **004** freeze 只挡新提议；已 `approved` 仍可 execute；退款 `refunded|refund_failed`  
 - 密钥仅环境变量；永不 commit  
@@ -210,4 +210,4 @@ packages/rails-alipay/
 
 ## 完成后
 
-- 更新 HANDOFF；D8 dogfood 计数；对照 `launch-plan.md` 检查清单（不自动发布）。
+- D8 dogfood 计数；对照 `launch-plan.md` 检查清单（不自动发布）。

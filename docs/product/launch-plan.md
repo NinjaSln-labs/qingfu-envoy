@@ -1,8 +1,8 @@
 # Launch Plan · 青蚨使（开源首发）
 
-- Status: **V1 代码闭合** → Dogfood 进行中
+- Status: **v0.1.0 已发布**（2026-08-22）→ **首发传播**（短文待发）· Private beta 待名单
 - 指标回检：`docs/product/success-metrics.md`
-- 定位：`docs/product/product-marketing.md`
+- 定位：README / ROADMAP 对外表述
 
 ## 五阶段
 
@@ -35,7 +35,7 @@
 
 ### Dogfood（ADR 002 · 发布阻断项）
 
-- [x] [dogfood-journal](../delivery/dogfood-journal.md) ≥20 笔允准（2026-08-22：21 笔，batch 20/20）
+- [x] dogfood ≥20 笔允准（2026-08-22：21 笔，batch 20/20；台账维护者本地）
 - [x] D8 反指标：**无人确认扣款 = 0**（audit 核对 + CI）
 - [ ] 北极星放心拍：延后至 Private beta
 

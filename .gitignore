@@ -7,8 +7,27 @@ dist/
 .env.*
 !.env.example
 
-# Competitor mirrors — local only, never push
+# --- Maintainer-local (never push unless owner explicitly discloses) ---
+# Principle: only what affects OSS use / following public docs stays in git.
+HANDOFF.md
+HANDOFF-ARCHIVE/
+
+# Audits & internal quality reports
+**/*AUDIT*.md
+
+# Internal delivery / dogfood ops
+docs/delivery/
+
+# Research & competitive intel
+docs/research/
+
+# Internal process / marketing notes (canonical: prd.md, launch-plan.md, README)
+docs/product/0-1-path.md
+docs/product/product-marketing.md
+docs/design/stage-plan.md
+
+# Competitor mirrors
 refs/competitors/
 
-# Local agent tooling (marketing canonical copy in docs/)
+# Local agent tooling
 .agents/

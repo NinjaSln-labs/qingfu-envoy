@@ -2,7 +2,7 @@
 
 - Status: accepted
 - Date: 2026-08-22（审计修复：闭合用户研究缺口）
-- 相关：`docs/product/problem-statement.md`；`docs/product/0-1-path.md`
+- 相关：`docs/product/problem-statement.md`；`docs/product/success-metrics.md`（D8）
 
 ## Context
 
