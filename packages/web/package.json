@@ -11,7 +11,8 @@
     "test": "npm run build && vitest run"
   },
   "dependencies": {
-    "@qingfu/core": "0.0.1"
+    "@qingfu/core": "0.0.1",
+    "@qingfu/rails-alipay": "0.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.19.11",

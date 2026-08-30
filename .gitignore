@@ -31,3 +31,4 @@ refs/competitors/
 
 # Local agent tooling
 .agents/
+.githooks/

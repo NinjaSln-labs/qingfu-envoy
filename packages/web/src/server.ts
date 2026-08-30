@@ -64,7 +64,7 @@ async function main(): Promise<void> {
     server.on("error", reject);
   });
 
-  console.log(`qingfu-web listening on http://${host}:${port}`);
+  console.log(`qingfu-web listening on http://${host}:${port} (rail=${ctx.railName})`);
 }
 
 main().catch((err) => {

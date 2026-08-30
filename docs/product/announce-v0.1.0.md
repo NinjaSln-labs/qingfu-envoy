@@ -82,4 +82,4 @@ https://github.com/NinjaSln-labs/qingfu-envoy/releases/tag/v0.1.0
 
 | 日期 | 渠道 | Star Δ | Issue/讨论 | 备注 |
 |------|------|--------|------------|------|
-| | | | | |
+| 2026-08-25 | GitHub Discussions #17（Announcements） | 0→? | [discussion #17](https://github.com/NinjaSln-labs/qingfu-envoy/discussions/17) | Owned；社媒暂无 |

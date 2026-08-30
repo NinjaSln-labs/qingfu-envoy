@@ -25,6 +25,7 @@ Shared store: `QINGFU_DATA_DIR` (same as CLI/MCP).
 | `QINGFU_WEB_PORT` | `3920` | HTTP port |
 | `QINGFU_DATA_DIR` | `~/.qingfu-envoy/` | Persistence |
 | `QINGFU_PRINCIPAL_ID` | `local-principal` | Principal actor id |
+| `QINGFU_RAIL` | `mock` | Payment rail: `mock` \| `alipay`（alipay 需 `ALIPAY_*`，无凭证则启动失败，不回落 Mock） |
 
 ## API (subset)
 
