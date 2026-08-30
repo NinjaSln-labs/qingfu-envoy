@@ -49,8 +49,16 @@ node packages/cli/dist/cli.js approve demo-001
 
 ```bash
 node packages/cli/dist/cli.js execute demo-001
+# 或显式：
+node packages/cli/dist/cli.js execute demo-001 --rail mock
 ```
 
+支付宝 sandbox（需 `.env` 中 `ALIPAY_*`，缺凭证会报错且**不会**静默回落 Mock）：
+
+```bash
+node packages/cli/dist/cli.js execute demo-001 --rail alipay
+# 或：QINGFU_RAIL=alipay node packages/cli/dist/cli.js execute demo-001
+```
 ### 6. 导出审计 JSON
 
 ```bash
@@ -80,6 +88,7 @@ node packages/cli/dist/cli.js unfreeze --envoy agent-1
 |------|------|
 | `QINGFU_DATA_DIR` | 数据目录，默认 `~/.qingfu-envoy` |
 | `QINGFU_PRINCIPAL_ID` | 主理人 ID（审计 actor），默认 `local-principal` |
+| `QINGFU_RAIL` | `mock`（默认）或 `alipay`；也可用全局/`execute`/`refund` 的 `--rail` |
 
 ## 帮助
 

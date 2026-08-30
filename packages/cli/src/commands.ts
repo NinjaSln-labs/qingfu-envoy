@@ -1,6 +1,7 @@
 import { DomainError } from "@qingfu/core";
 import type { CliContext } from "./context.js";
-import { exportJson, principalId } from "./context.js";
+import { exportJson, principalId, withRail } from "./context.js";
+import { parseRailName } from "./rail.js";
 
 export type RunResult = { ok: true; message?: string } | { ok: false; error: string };
 
@@ -75,7 +76,7 @@ export async function runCommand(
       case "cancel":
         return runCancel(ctx, positional);
       case "execute":
-        return await runExecute(ctx, positional);
+        return await runExecute(ctx, positional, flags);
       case "refund":
         return await runRefund(ctx, positional, flags);
       case "export":
@@ -211,16 +212,26 @@ function runCancel(ctx: CliContext, positional: string[]): RunResult {
 async function runExecute(
   ctx: CliContext,
   positional: string[],
+  flags: Map<string, string>,
 ): Promise<RunResult> {
   const id = positional[0];
   if (!id) {
-    return fail("usage: execute <proposalId>");
+    return fail("usage: execute <proposalId> [--rail mock|alipay]");
   }
-  const next = await ctx.proposals.executeProposal(id, {
-    kind: "principal",
-    id: principalId(),
-  });
-  return ok(JSON.stringify(next, null, 2));
+  try {
+    const railFlag = flags.get("rail");
+    const bound = railFlag ? withRail(ctx, parseRailName(railFlag)) : ctx;
+    const next = await bound.proposals.executeProposal(id, {
+      kind: "principal",
+      id: principalId(),
+    });
+    return ok(JSON.stringify(next, null, 2));
+  } catch (err) {
+    if (err instanceof Error && /alipay rail requires|unknown rail/.test(err.message)) {
+      return fail(err.message);
+    }
+    throw err;
+  }
 }
 
 async function runRefund(
@@ -230,11 +241,20 @@ async function runRefund(
 ): Promise<RunResult> {
   const id = positional[0];
   if (!id) {
-    return fail("usage: refund <proposalId>");
+    return fail("usage: refund <proposalId> [--principal <id>] [--rail mock|alipay]");
   }
-  const principal = flags.get("principal")?.trim() || principalId();
-  const next = await ctx.refunds.requestRefund(id, principal);
-  return ok(JSON.stringify(next, null, 2));
+  try {
+    const railFlag = flags.get("rail");
+    const bound = railFlag ? withRail(ctx, parseRailName(railFlag)) : ctx;
+    const principal = flags.get("principal")?.trim() || principalId();
+    const next = await bound.refunds.requestRefund(id, principal);
+    return ok(JSON.stringify(next, null, 2));
+  } catch (err) {
+    if (err instanceof Error && /alipay rail requires|unknown rail/.test(err.message)) {
+      return fail(err.message);
+    }
+    throw err;
+  }
 }
 
 function runExport(ctx: CliContext, flags: Map<string, string>): RunResult {
@@ -263,7 +283,7 @@ function runUnfreeze(ctx: CliContext, flags: Map<string, string>): RunResult {
 }
 
 function helpText(): string {
-  return `qingfu — Qingfu Envoy principal CLI (Mock rail)
+  return `qingfu — Qingfu Envoy principal CLI
 
 Commands:
   envoy register <id> --name <name>
@@ -272,12 +292,15 @@ Commands:
   approve <proposalId> [--principal <id>]
   reject <proposalId> [--principal <id>]
   cancel <proposalId>
-  execute <proposalId>
-  refund <proposalId> [--principal <id>]
+  execute <proposalId> [--rail mock|alipay]
+  refund <proposalId> [--principal <id>] [--rail mock|alipay]
   export [--proposal <proposalId>]
   freeze --envoy <id> [--principal <id>]
   unfreeze --envoy <id> [--principal <id>]
 
-Env: QINGFU_DATA_DIR, QINGFU_PRINCIPAL_ID (default local-principal)
+Rail: default mock. Global --rail mock|alipay or env QINGFU_RAIL.
+      alipay requires ALIPAY_* (errors if missing; does not fall back to mock).
+
+Env: QINGFU_DATA_DIR, QINGFU_PRINCIPAL_ID (default local-principal), QINGFU_RAIL
 `;
 }

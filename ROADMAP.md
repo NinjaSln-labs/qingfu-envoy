@@ -9,16 +9,16 @@
 
 ---
 
-## 当前状态（截至 2026-08-22）
+## 当前状态（截至 2026-08-25）
 
 | 维度 | 状态 |
 |------|------|
 | 产品规格 | ✅ PRD、成功指标、领域模型已定稿 |
 | 实施计划 | ✅ [implementation-plan-v1](docs/design/implementation-plan-v1.md) |
 | V1 垂直切片 | ✅ **S1–S5 闭合**；`npm test` 62+ 绿（rails sandbox 无 env 则 skip） |
-| 实现审计 | ✅ S1–S5 + V1 rollup（维护者本地 · 不入库） |
-| 下一阶段 | **首发传播**（[launch-plan](docs/product/launch-plan.md)）· 按需 V1.1 |
-| 真轨 | `rails-alipay` 适配器就绪；CLI/Web **默认 Mock**；sandbox 凭证可选实跑 |
+| Release / 公告 | ✅ [v0.1.0](https://github.com/NinjaSln-labs/qingfu-envoy/releases/tag/v0.1.0) · [Discussions #17](https://github.com/NinjaSln-labs/qingfu-envoy/discussions/17) |
+| 下一阶段 | **V1.1 Iterate**（Issue 池）· Private beta ⏸ 待名单 |
+| 真轨 | `rails-alipay` 适配器就绪；CLI/Web **默认 Mock**；`--rail alipay` 待做 |
 
 我们**不**用虚假进度条：每个阶段以 [stage-spec DoD](docs/design/stage-specs/) 勾选为准。
 
@@ -40,9 +40,8 @@ flowchart LR
     S5[S5 支付宝 sandbox]
   end
   subgraph now [当前]
-    DF[Dogfood 002]
-    LP[Launch 清单]
-    V1[V1 tag]
+    AN[Announce done]
+    IT[V1.1 Iterate]
   end
   subgraph later [V1.1+ · 计划披露]
     W[微信轨]
@@ -52,10 +51,10 @@ flowchart LR
   subgraph never [不在路线图 unless 新 ADR]
     X[静默自付]
   end
-  S5 --> DF --> LP --> V1
-  V1 --> W
-  V1 --> R
-  V1 --> P
+  S5 --> AN --> IT
+  IT --> W
+  IT --> R
+  IT --> P
 ```
 
 **依赖纪律：** 代码 `S1 → S2 → (S3 ∥ S4) → S5` 已闭合；发布 `Dogfood → Private → Announce`（见 [launch-plan](docs/product/launch-plan.md)）。
@@ -73,8 +72,8 @@ flowchart LR
 | M3 Agent 接入 | S3 | 代码 | `@qingfu/mcp`；**无 blind execute** | ✅ |
 | M4 任务面 | S4 | 代码 | `@qingfu/web`（127.0.0.1） | ✅ |
 | M5 真轨骨架 | S5 | 代码 | `@qingfu/rails-alipay`（env 可 skip） | ✅ |
-| **V1 标签** | S1–S5 | 发布 | README 三端演示；[launch 检查清单](docs/product/launch-plan.md) | ⏳ Dogfood 后 |
-| V1.1 | — | 代码 | 微信轨；`--rail alipay`；Web 鉴权 | 📋 已披露未排期 |
+| **V1 标签** | S1–S5 | 发布 | [v0.1.0](https://github.com/NinjaSln-labs/qingfu-envoy/releases/tag/v0.1.0)；[launch 检查清单](docs/product/launch-plan.md) | ✅ 2026-08-22 |
+| V1.1 | — | 代码 | `--rail alipay`；Web 鉴权；MCP token；微信轨 | ⏳ Issue 池 / 实施中 |
 | V1.2 | — | 代码 | 策略边界（品类/商户/时窗） | 📋 P2，需 PRD 修订 |
 | 静默自付 | — | — | **不在路线图** | 🚫 ADR 001 |
 
@@ -154,13 +153,14 @@ flowchart LR
 
 ## 时间预期（诚实说明）
 
-我们**不追求极速**，**不设对外虚假日期**。当前进入 **Dogfood → V1 标签** 阶段。
+我们**不追求极速**，**不设对外虚假日期**。当前进入 **V1.1 Iterate**（首发传播已落 Discussions；Private beta 待名单）。
 
 | 阶段 | 粗略量级（维护者估算，非承诺） |
 |------|-------------------------------|
-| Dogfood | 4 周或 ≥20 笔允准（002） |
-| Private beta | ≤10 人试用 |
-| V1 标签 | launch 清单全绿后 |
+| Dogfood | ✅ ≥20 笔允准（002） |
+| V1 标签 | ✅ v0.1.0（2026-08-22） |
+| Announce | ✅ Discussions #17（2026-08-25） |
+| Private beta | ≤10 人试用（⏸ 待名单） |
 | V1.1 | 按 Issue + 新 ADR |
 
 ---

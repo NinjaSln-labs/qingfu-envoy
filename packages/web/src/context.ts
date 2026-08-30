@@ -1,26 +1,33 @@
 import {
-  createMockRail,
   exportAuditJson,
   JsonStore,
   ProposalService,
   RefundService,
 } from "@qingfu/core";
+import {
+  defaultRailName,
+  resolvePaymentRail,
+  type RailName,
+} from "./rail.js";
 
 export type WebContext = {
   store: JsonStore;
   proposals: ProposalService;
   refunds: RefundService;
+  railName: RailName;
 };
 
 export async function openWebContext(
   dataDir?: string,
+  railName: RailName = defaultRailName(),
 ): Promise<WebContext> {
   const store = await JsonStore.open(dataDir);
-  const rail = createMockRail();
+  const rail = resolvePaymentRail(railName);
   return {
     store,
     proposals: new ProposalService(store, rail),
     refunds: new RefundService(store, rail),
+    railName,
   };
 }
 
